@@ -6,18 +6,23 @@ import { TodoList } from "./components/TodoList";
 import { TodoItem } from "./components/TodoItem";
 import { CreateTodo } from "./components/CreateTodo";
 // import './App.css';
+//importar hooks
+import {useLocalStorage} from "./hooks/useLocalStorage";
 
-const defaultActivities = [
-  {text: 'fgfgf', completed: true},
-  {text: 'descripcion1', completed: false},
-  {text: 'texto', completed: false},
-];
-
+// const defaultActivities = [
+//   {text: 'fgfgf', completed: true},
+//   {text: 'descripcion1', completed: false},
+//   {text: 'texto', completed: false},
+// ];
 
 function App() {
 
-  //Estado actividades
-  const [activities, setActivities] = React.useState(defaultActivities);
+  const {
+    item: activities,
+    saveItem: saveActivities,
+    loading,
+    error
+  } = useLocalStorage('TODO_V1', []);
 
   //Estado TodoSearch
   const [searchValue, setSearchValue] = React.useState('');
@@ -52,7 +57,7 @@ function App() {
     newActivities[activityIndex].completed = true;
     
     //actualizamos el estado
-    setActivities(newActivities);
+    saveActivities(newActivities);
   }
 
   //Eliminar actividad
@@ -67,9 +72,9 @@ function App() {
     newActivities.splice(activityIndex, 1);
     
     //actualizamos el estado
-    setActivities(newActivities);
+    saveActivities(newActivities);
   }
-
+  
   return (
     <React.Fragment>
       <TodoCounter 
@@ -83,6 +88,10 @@ function App() {
         />
         
         <TodoList>
+          {error && <p>Hubo un Error!!!!!!</p>}
+          {loading && <p>Estamos Cargado la Información</p>}
+          {(!loading && !searchedActivities.length) && <p>¡¡¡Crea Tu Primer Todo!!!</p>}
+
           {searchedActivities.map( activity => (
             <TodoItem 
               key={activity.text} 
