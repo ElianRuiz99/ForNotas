@@ -38,7 +38,36 @@ function App() {
       
       return todoText.includes(searchText);
     })
+  }
+
+  //completar actividad, marcar actividad
+  const completeActivity = (texto) => {
+    //obtener index de la actividad
+    const activityIndex = activities.findIndex(activity => activity.text == texto);
+
+    //Crear un nuevo array de actividades
+    const newActivities = [...activities];
+
+    //marcar la propiedad de completed
+    newActivities[activityIndex].completed = true;
     
+    //actualizamos el estado
+    setActivities(newActivities);
+  }
+
+  //Eliminar actividad
+  const deleteActivity = (texto) => {
+    //obtener index de la actividad
+    const activityIndex = activities.findIndex(activity => activity.text == texto);
+
+    //Crear un nuevo array de actividades
+    const newActivities = [...activities];
+
+    //eliminar
+    newActivities.splice(activityIndex, 1);
+    
+    //actualizamos el estado
+    setActivities(newActivities);
   }
 
   return (
@@ -59,6 +88,8 @@ function App() {
               key={activity.text} 
               text={activity.text} 
               completed={activity.completed}
+              onCompleted={() => completeActivity(activity.text)}
+              onDelete={() => deleteActivity(activity.text)}
             />
           ))}
         </TodoList>
