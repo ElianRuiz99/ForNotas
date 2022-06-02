@@ -8,6 +8,8 @@ import { CreateTodo } from "./components/CreateTodo";
 // import './App.css';
 //importar hooks
 import {useLocalStorage} from "./hooks/useLocalStorage";
+//importar modal
+import {Modal} from "./modal/Modal";
 
 // const defaultActivities = [
 //   {text: 'fgfgf', completed: true},
@@ -26,6 +28,9 @@ function App() {
 
   //Estado TodoSearch
   const [searchValue, setSearchValue] = React.useState('');
+
+  //Estado Modal
+  const [openModal, setOpenModal] = React.useState(false);
 
   //Contador de actividades
   const completedActivities = activities.filter(todo => !!todo.completed).length;
@@ -48,7 +53,7 @@ function App() {
   //completar actividad, marcar actividad
   const completeActivity = (texto) => {
     //obtener index de la actividad
-    const activityIndex = activities.findIndex(activity => activity.text == texto);
+    const activityIndex = activities.findIndex(activity => activity.text === texto);
 
     //Crear un nuevo array de actividades
     const newActivities = [...activities];
@@ -63,7 +68,7 @@ function App() {
   //Eliminar actividad
   const deleteActivity = (texto) => {
     //obtener index de la actividad
-    const activityIndex = activities.findIndex(activity => activity.text == texto);
+    const activityIndex = activities.findIndex(activity => activity.text === texto);
 
     //Crear un nuevo array de actividades
     const newActivities = [...activities];
@@ -103,7 +108,18 @@ function App() {
           ))}
         </TodoList>
 
-        <CreateTodo />
+        {!!openModal && (
+          <Modal
+            setOpenModal={setOpenModal}
+          >
+            <p>Teletrasportacion</p>
+        
+          </Modal>
+        )} 
+         
+        <CreateTodo 
+          setOpenModal={setOpenModal}
+        />
     
     </React.Fragment>
   );

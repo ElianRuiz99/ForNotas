@@ -13,6 +13,7 @@
     height: 64px;
     width: 200px;
     margin: 10px auto;
+    z-index: 1;
 }
 .CreateTodoBtn:hover{
     color: #e5e5f1;
@@ -36,8 +37,7 @@
         justify-content: center;
         height: 64px;
         width: 64px;
-
-        
+        z-index: 1;
     }
     .CreateTodoBtn:hover{
         color: #e5e5f1;
