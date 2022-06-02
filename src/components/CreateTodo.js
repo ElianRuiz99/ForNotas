@@ -7,6 +7,7 @@ function CreateTodo(props){
     const onClickButton = () =>{
         props.setOpenModal(true); 
     }
+    
     return(
         <button 
         className="CreateTodoBtn"

@@ -20,7 +20,7 @@ function Modal({children, setOpenModal}){
                         X
                     </span>
             </div>
-            {children},
+            {children}
         </div>
         ,
         document.getElementById('modal')

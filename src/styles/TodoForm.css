@@ -1,0 +1,62 @@
+.form-create-todo{
+    background-color: #fff;
+    width: 70%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 32px 30px;
+}
+.label-form{
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.form-create-todo textarea{
+    background-color: #F9FBFC;
+    border: 2px solid #202329;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
+    color: #1E1E1F;
+    font-size: 20px;
+    text-align: center;
+    padding: 12px;
+    height: 96px;
+    width: calc(100%-25px);
+}
+.form-create-todo textarea:focus{
+    outline-color:#61DAFA;
+}
+.buttonsContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+.form-button{
+    height: 40px;
+    width: 150px;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: 18px;
+    font-family: 'Montserrat Alternates';
+}
+.cancel{
+    border: 1px solid #61DAFA;
+}
+.cancel:hover{
+    box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
+}  
+
+.submit{
+    background-color: #61DAFA;
+    border: none;
+}
+.submit:hover{
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
+    border: 1px solid #202329;
+}

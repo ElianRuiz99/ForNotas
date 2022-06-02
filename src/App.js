@@ -5,6 +5,7 @@ import { TodoSearch } from "./components/TodoSearch";
 import { TodoList } from "./components/TodoList";
 import { TodoItem } from "./components/TodoItem";
 import { CreateTodo } from "./components/CreateTodo";
+import { TodoForm } from "./components/TodoForm";
 // import './App.css';
 //importar hooks
 import {useLocalStorage} from "./hooks/useLocalStorage";
@@ -79,6 +80,17 @@ function App() {
     //actualizamos el estado
     saveActivities(newActivities);
   }
+
+
+  //agregar actividad
+  const addActivity = (text) =>{
+    const newActivities = [...activities];
+    newActivities.push({
+      completed: false,
+      text: text,
+    });
+    saveActivities(newActivities);
+  }
   
   return (
     <React.Fragment>
@@ -112,7 +124,10 @@ function App() {
           <Modal
             setOpenModal={setOpenModal}
           >
-            <p>Teletrasportacion</p>
+            <TodoForm 
+              addActivity={addActivity}
+              setOpenModal={setOpenModal}
+            />
         
           </Modal>
         )} 
